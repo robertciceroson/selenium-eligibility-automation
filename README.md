@@ -155,3 +155,11 @@ selenium-eligibility-automation/
 │   └── eligibility_test_cases.csv   # Auto-generated; committed for reference
 └── test_results.csv              # Written after each test run
 ```
+
+## Author
+
+**Robert C. Son**
+Scrum Master · Process Engineer · Prompt Engineer · Data Analyst · AI/ML Practitioner · CSM · CSPO · AI-Empowered SAFe Agilist
+
+- GitHub: [github.com/robertciceroson](https://github.com/robertciceroson)
+- LinkedIn: [linkedin.com/in/robert-son-0b33b3bb](https://linkedin.com/in/robert-son-0b33b3bb)
