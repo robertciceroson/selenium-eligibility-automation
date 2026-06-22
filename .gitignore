@@ -1,0 +1,13 @@
+# Generated test output
+test_results.csv
+test_data/eligibility_test_cases.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
