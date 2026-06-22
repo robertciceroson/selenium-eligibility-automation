@@ -28,16 +28,13 @@ jobs:
       - name: Generate synthetic test data
         run: python generate_test_data.py
 
-      - name: Run Python unit tests (eligibility rules)
-        run: pytest test_eligibility_form.py -v --tb=short -k "not selenium"
-
       - name: Start local web server
         run: |
           python -m http.server 8080 &
           sleep 2
 
-      - name: Run Selenium UI tests
-        run: pytest test_eligibility_form.py -v --tb=short -k "selenium"
+      - name: Run Selenium eligibility test suite
+        run: pytest test_eligibility_form.py -v --tb=short
         env:
           DISPLAY: ':99'
 
