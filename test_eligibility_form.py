@@ -33,7 +33,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FORM_URL = "file://" + os.path.join(HERE, "test_pages", "eligibility_form.html")
+FORM_URL = "file://" + os.path.join(HERE, "eligibility_form.html")
 CSV_PATH = os.path.join(HERE, "test_data", "eligibility_test_cases.csv")
 RESULTS_LOG = os.path.join(HERE, "test_results.csv")
 
