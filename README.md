@@ -82,7 +82,7 @@ without modifying any code. A dedicated Selenium test
 `SUBSIDY_ELIGIBLE` when the Medicaid ceiling is lowered to 130%.
 
 **Requirement 3 — Regression catching with a broken rules engine.** A
-two-layer regression test demonstrates that boundary-focused test data
+A data-driven parametrized test suite (41 cases) with CI/CD via GitHub Actions demonstrates that boundary-focused test data
 catches real defects:
 
 - **Layer 1 (unit):** `test_broken_rules_engine_regression_caught` calls
@@ -158,7 +158,7 @@ selenium-eligibility-automation/
 
 ## Author
 
-**Robert C. Son**
+**Robert Cicero Son**
 Scrum Master · Process Engineer · Prompt Engineer · Data Analyst · AI/ML Practitioner · CSM · CSPO · AI-Empowered SAFe Agilist
 
 - GitHub: [github.com/robertciceroson](https://github.com/robertciceroson)
