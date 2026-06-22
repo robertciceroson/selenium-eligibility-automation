@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coverage Application - Eligibility Intake (Demo)</title>
+</head>
+<body>
+  <h1>Health Coverage Application (Demo / Synthetic Data Only)</h1>
+
+  <form id="eligibility-form">
+    <label for="first-name-input">First Name</label>
+    <input type="text" id="first-name-input" name="firstName" />
+
+    <label for="last-name-input">Last Name</label>
+    <input type="text" id="last-name-input" name="lastName" />
+
+    <label for="family-size-input">Household / Family Size</label>
+    <input type="number" id="family-size-input" name="familySize" min="1" />
+
+    <label for="income-input">Annual Household Income ($)</label>
+    <input type="number" id="income-input" name="annualIncome" min="0" step="0.01" />
+
+    <button id="submit-eligibility-btn" type="button" onclick="evaluateEligibility()">
+      Check Eligibility
+    </button>
+  </form>
+
+  <div id="eligibility-result"></div>
+
+  <script>
+    // Mirrors the simplified rule set in eligibility_rules.py so this
+    // demo page can be tested end-to-end without a backend server.
+    // See eligibility_rules.py for the authoritative Python version and
+    // its documentation -- this JS copy exists only so the static HTML
+    // demo page is self-contained for Selenium to drive.
+    const FPL_BASE = 15060;
+    const FPL_PER_ADDITIONAL_PERSON = 5380;
+    const MEDICAID_EXPANSION_CEILING_PCT = 138;
+    const SUBSIDY_CEILING_PCT = 400;
+
+    function fplForHousehold(familySize) {
+      return FPL_BASE + FPL_PER_ADDITIONAL_PERSON * (familySize - 1);
+    }
+
+    function evaluateEligibility() {
+      const familySize = parseInt(document.getElementById('family-size-input').value, 10);
+      const income = parseFloat(document.getElementById('income-input').value);
+
+      const fpl = fplForHousehold(familySize);
+      const pctOfFpl = (income / fpl) * 100;
+
+      let result;
+      if (pctOfFpl <= MEDICAID_EXPANSION_CEILING_PCT) {
+        result = 'MEDICAID_ELIGIBLE';
+      } else if (pctOfFpl <= SUBSIDY_CEILING_PCT) {
+        result = 'SUBSIDY_ELIGIBLE';
+      } else {
+        result = 'NOT_ELIGIBLE';
+      }
+
+      document.getElementById('eligibility-result').innerText =
+        'Eligibility Result: ' + result;
+    }
+  </script>
+</body>
+</html>
