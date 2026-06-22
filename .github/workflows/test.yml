@@ -1,0 +1,49 @@
+name: Selenium Eligibility Test Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Generate synthetic test data
+        run: python generate_test_data.py
+
+      - name: Run Python unit tests (eligibility rules)
+        run: pytest test_eligibility_form.py -v --tb=short -k "not selenium"
+
+      - name: Start local web server
+        run: |
+          python -m http.server 8080 &
+          sleep 2
+
+      - name: Run Selenium UI tests
+        run: pytest test_eligibility_form.py -v --tb=short -k "selenium"
+        env:
+          DISPLAY: ':99'
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test_results.csv
