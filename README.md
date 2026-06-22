@@ -141,10 +141,10 @@ all 41 test cases: 36 boundary/typical happy-path cases across 4 family
 sizes, plus 5 invalid-input validation scenarios.
 
 ---
-## CI/CD
+## Continuous Integration (CI/CD) 
 
 This repository includes a GitHub Actions workflow that automatically runs the full 41-case Selenium test suite on every push to `main`— demonstrating 
-continuous integration practices standard in enterprise QA environments..
+continuous integration practices standard in enterprise QA environments.
 
 - Workflow file: `.github/workflows/test.yml`
 - Runs on: `ubuntu-latest`
