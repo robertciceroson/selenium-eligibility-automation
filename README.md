@@ -141,7 +141,19 @@ all 41 test cases: 36 boundary/typical happy-path cases across 4 family
 sizes, plus 5 invalid-input validation scenarios.
 
 ---
+## CI/CD
 
+This repository includes a GitHub Actions workflow that automatically runs the full 41-case Selenium test suite on every push to `main`— demonstrating 
+continuous integration practices standard in enterprise QA environments..
+
+- Workflow file: `.github/workflows/test.yml`
+- Runs on: `ubuntu-latest`
+- Steps: checkout → Python 3.11 setup → install dependencies → install Chrome → generate test data → run pytest suite
+- Test results uploaded as a downloadable artifact after every run
+
+[![Selenium Eligibility Test Suite](https://github.com/robertciceroson/selenium-eligibility-automation/actions/workflows/test.yml/badge.svg)](https://github.com/robertciceroson/selenium-eligibility-automation/actions/workflows/test.yml)
+
+---
 ## Repository structure
 
 ```
