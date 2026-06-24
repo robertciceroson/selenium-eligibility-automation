@@ -82,7 +82,7 @@ without modifying any code. A dedicated Selenium test
 `SUBSIDY_ELIGIBLE` when the Medicaid ceiling is lowered to 130%.
 
 **Requirement 3 — Regression catching with a broken rules engine.** A
-A data-driven parametrized test suite (41 cases) with CI/CD via GitHub Actions demonstrates that boundary-focused test data
+data-driven parametrized test suite (41 cases) with CI/CD via GitHub Actions demonstrates that boundary-focused test data
 catches real defects:
 
 - **Layer 1 (unit):** `test_broken_rules_engine_regression_caught` calls
@@ -117,6 +117,21 @@ rule set changes, regenerating the test data is one command
 
 ## Setup
 
+### Option A — One-Click Launch (Windows)
+
+Double-click `start.bat` in the project folder. It will:
+- Check Python is installed
+- Check Chrome is installed (required for Selenium)
+- Verify `test_pages/eligibility_form.html` is present
+- Create a virtual environment automatically if one doesn't exist
+- Install all dependencies from `requirements.txt`
+- Generate the synthetic test data grid automatically
+- Run the full pytest suite with verbose output
+
+> **Note:** `webdriver-manager` handles ChromeDriver download automatically on first run.
+
+### Option B — Manual Setup
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -127,6 +142,10 @@ matching chromedriver automatically.
 ---
 
 ## Running it
+
+### Option A — Double-click `start.bat` (handles everything automatically)
+
+### Option B — Manual
 
 ```bash
 # 1. Generate the synthetic test data grid (41 test cases)
@@ -141,9 +160,10 @@ all 41 test cases: 36 boundary/typical happy-path cases across 4 family
 sizes, plus 5 invalid-input validation scenarios.
 
 ---
-## Continuous Integration (CI/CD) 
 
-This repository includes a GitHub Actions workflow that automatically runs the full 41-case Selenium test suite on every push to `main`— demonstrating 
+## Continuous Integration (CI/CD)
+
+This repository includes a GitHub Actions workflow that automatically runs the full 41-case Selenium test suite on every push to `main` — demonstrating
 continuous integration practices standard in enterprise QA environments.
 
 - Workflow file: `.github/workflows/test.yml`
@@ -154,19 +174,25 @@ continuous integration practices standard in enterprise QA environments.
 [![Selenium Eligibility Test Suite](https://github.com/robertciceroson/selenium-eligibility-automation/actions/workflows/test.yml/badge.svg)](https://github.com/robertciceroson/selenium-eligibility-automation/actions/workflows/test.yml)
 
 ---
+
 ## Repository structure
 
 ```
 selenium-eligibility-automation/
-├── eligibility_rules.py          # Rules engine (normal + deliberately broken variant)
-├── eligibility_form.html         # Standalone intake form (no backend required)
-├── generate_test_data.py         # Synthetic CSV grid generator
-├── test_eligibility_form.py      # Data-driven Selenium + pytest test suite
-├── requirements.txt              # selenium, webdriver-manager, pytest
+├── eligibility_rules.py               # Rules engine (normal + deliberately broken variant)
+├── eligibility_form.html              # Standalone intake form (no backend required)
+├── generate_test_data.py              # Synthetic CSV grid generator
+├── test_eligibility_form.py           # Data-driven Selenium + pytest test suite
+├── requirements.txt                   # selenium, webdriver-manager, pytest
+├── start.bat                          # One-click local test runner for Windows
+├── test_pages/
+│   └── eligibility_form.html          # Form served during test execution
 ├── test_data/
-│   └── eligibility_test_cases.csv   # Auto-generated; committed for reference
-└── test_results.csv              # Written after each test run
+│   └── eligibility_test_cases.csv     # Auto-generated; committed for reference
+└── test_results.csv                   # Written after each test run
 ```
+
+---
 
 ## Author
 
