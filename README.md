@@ -201,7 +201,7 @@ selenium-eligibility-automation/
 ## Author
 
 **Robert Cicero Son**
-Scrum Master · Process Engineer · Prompt Engineer · Data Analyst · AI/ML Practitioner · CSM · CSPO · AI-Empowered SAFe Agilist
+Technical Scrum Master · AI Business Analyst · Process Engineer · QA Engineer · AI/ML Practitioner · CSM · CSPO · AI-Empowered SAFe Agilist
 
 - GitHub: [github.com/robertciceroson](https://github.com/robertciceroson)
 - LinkedIn: [linkedin.com/in/robert-son-0b33b3bb](https://linkedin.com/in/robert-son-0b33b3bb)
